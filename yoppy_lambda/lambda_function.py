@@ -9,29 +9,29 @@ def handle_date():
     today = datetime.now(JST)
     lastmonth = datetime(today.year, today.month-1,1)
     
-    global lastmonth_str
     lastmonth_str=lastmonth.strftime("%Y-%m")
     
     year_only_str=lastmonth.strftime("%Y")
     month_only_str=lastmonth.strftime("%m")
     
-    global TEMP_FILENAME
     TEMP_FILENAME = '/tmp/食堂利用情報_' + year_only_str + '_' + month_only_str + '.csv' #/tmp/のパスが必要
-    global LATEST_OUTPUT_KEY 
     LATEST_OUTPUT_KEY = 'latest/食堂利用情報_' + year_only_str + '_' + month_only_str + '.csv' #上書きされる
-    global LAST_MONTH_OUTPUT_KEY 
     LAST_MONTH_OUTPUT_KEY =  year_only_str + '/' + month_only_str + '/食堂利用情報_' + year_only_str + '_' + month_only_str + '.csv'   #2021/07/export.csv
+    print(TEMP_FILENAME)
+    print(LATEST_OUTPUT_KEY)
+    print(LAST_MONTH_OUTPUT_KEY)
     return [lastmonth_str,TEMP_FILENAME,LATEST_OUTPUT_KEY,LAST_MONTH_OUTPUT_KEY]
 
-def export_csv(f):
+def export_csv(frame,temp_filename):
     #dynamoDBからアイテムを取得
-    df = pd.DataFrame(f)
+    df = pd.DataFrame(frame)
     #金額とゲスト有無のカラムを追加
     df2 = df.assign(利用金額=lambda x: (x['reservation_num']*200))
     df2 = df2.assign(ゲスト有無=lambda x: np.where((x['reservation_num']>1),'1','0'))
     df2 = df2.rename(columns={'mail_address':'利用者','used_at_date':'利用日','used_in':'利用場所','reservation_num':'利用人数'})
     #確認用
-    #print(df2.to_string())
+    print(df2.to_string())
     #csvファイルにエクスポート
-    data = df2.to_csv(TEMP_FILENAME, index=False, header=True)
+    data = df2.to_csv(temp_filename, index=False, header=True)
+    print(type(data))
     return data

@@ -1,5 +1,5 @@
-from yoppy_lambda.lambda_function import handle_date
-
+from yoppy_lambda.lambda_function import handle_date,export_csv
+import pandas as pd
 def test_handle_date():
     x=handle_date()
     assert x[0]=='2021-07'
@@ -7,7 +7,7 @@ def test_handle_date():
     assert x[2]=='latest/食堂利用情報_2021_07.csv'
     assert x[3]=='2021/07/食堂利用情報_2021_07.csv'
 
-"""
+
 def test_export_csv():
     response={'Count': 2,
 'Items': [{'mail_address': 'okuhara@arara.com',
@@ -29,4 +29,6 @@ def test_export_csv():
 'RequestId': '9LAFQD1E1TBD8NDAOJF9M3VL5BVV4KQNSO5AEMVJF66Q9ASUAAJG',
 'RetryAttempts': 0},
 'ScannedCount': 8}
-"""
+    y=export_csv(response,'/tmp/食堂利用情報_2021_07.csv')
+    test_frame=pd.read_csv(y)
+    assert not test_frame.df.isnull().values.sum()
