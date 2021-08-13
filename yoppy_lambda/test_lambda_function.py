@@ -1,17 +1,11 @@
 from yoppy_lambda.lambda_function import handle_date
 
-lastmonth_str=''
-TEMP_FILENAME=''
-LATEST_OUTPUT_KEY=''
-LAST_MONTH_OUTPUT_KEY=''
-
 def test_handle_date():
-    global lastmonth_str
-    handle_date()
-    assert lastmonth_str=='2021-07'
-    assert TEMP_FILENAME=='/tmp/食堂利用情報_2021_07.csv'
-    assert LATEST_OUTPUT_KEY=='latest/食堂利用情報_2021_07.csv'
-    assert LAST_MONTH_OUTPUT_KEY=='2021/07/食堂利用情報_2021_07.csv'
+    x=handle_date()
+    assert x[0]=='2021-07'
+    assert x[1]=='/tmp/食堂利用情報_2021_07.csv'
+    assert x[2]=='latest/食堂利用情報_2021_07.csv'
+    assert x[3]=='2021/07/食堂利用情報_2021_07.csv'
 
 """
 def test_export_csv():

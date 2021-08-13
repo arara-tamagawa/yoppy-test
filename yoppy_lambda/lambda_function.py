@@ -21,7 +21,7 @@ def handle_date():
     LATEST_OUTPUT_KEY = 'latest/食堂利用情報_' + year_only_str + '_' + month_only_str + '.csv' #上書きされる
     global LAST_MONTH_OUTPUT_KEY 
     LAST_MONTH_OUTPUT_KEY =  year_only_str + '/' + month_only_str + '/食堂利用情報_' + year_only_str + '_' + month_only_str + '.csv'   #2021/07/export.csv
-
+    return [lastmonth_str,TEMP_FILENAME,LATEST_OUTPUT_KEY,LAST_MONTH_OUTPUT_KEY]
 
 def export_csv(f):
     #dynamoDBからアイテムを取得
