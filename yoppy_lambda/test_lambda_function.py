@@ -6,6 +6,7 @@ LATEST_OUTPUT_KEY=''
 LAST_MONTH_OUTPUT_KEY=''
 
 def test_handle_date():
+    global lastmonth_str
     handle_date()
     assert lastmonth_str=='2021-07'
     assert TEMP_FILENAME=='/tmp/食堂利用情報_2021_07.csv'
