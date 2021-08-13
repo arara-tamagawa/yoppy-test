@@ -1,4 +1,4 @@
-import lambda_function
+from yoppy_lambda import lambda_function
 
 last_month_str=''
 TEMP_FILENAME=''
