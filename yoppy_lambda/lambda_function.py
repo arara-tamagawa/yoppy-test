@@ -56,10 +56,11 @@ def export_csv(f):
     #csvファイルにエクスポート
     data = df2.to_csv(TEMP_FILENAME, index=False, header=True)
     return data
-if __name__ == '__main__':
-#def lambda_handler(event, context):
+#if __name__ == '__main__':
+def lambda_handler(event, context):
     handle_date()
     csv_file=export_csv(get_table(lastmonth_str)['Items'])
     #s3にアップロード
     #s3_resource.Bucket(OUTPUT_BUCKET).upload_file(TEMP_FILENAME, LATEST_OUTPUT_KEY)
     #s3_resource.Bucket(OUTPUT_BUCKET).upload_file(TEMP_FILENAME, LAST_MONTH_OUTPUT_KEY)    
+    return 0
