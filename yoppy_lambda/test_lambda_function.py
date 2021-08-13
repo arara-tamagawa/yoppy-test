@@ -1,6 +1,6 @@
 from yoppy_lambda.lambda_function import handle_date
 
-last_month_str=''
+lastmonth_str=''
 TEMP_FILENAME=''
 LATEST_OUTPUT_KEY=''
 LAST_MONTH_OUTPUT_KEY=''
