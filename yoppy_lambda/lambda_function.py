@@ -1,10 +1,10 @@
 import json
-import boto3
+#import boto3
 from datetime import datetime, timedelta, timezone
 import pprint
-from boto3.dynamodb.conditions import Key, Attr
+#from boto3.dynamodb.conditions import Key, Attr
 import pandas as pd
-import numpy as np
+#import numpy as np
 
 #dynamodb指定
 DYNAMO_TABLE_NAME = 'yoppy-test-db2'    #要確認
