@@ -11,7 +11,7 @@ import pprint
 table    = 1
 # #s3指定
 s3_resource = 1
-# OUTPUT_BUCKET = 'log-yoppy-csv'         #要確認
+OUTPUT_BUCKET = 'log-yoppy-csv'         #要確認
 
 
 def handle_date():
