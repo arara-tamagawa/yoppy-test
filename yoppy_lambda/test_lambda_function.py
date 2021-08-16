@@ -13,4 +13,4 @@ def test_export_csv():
     y=export_csv(response['Items'],'/tmp/食堂利用情報_2021_07.csv')
 
     test_frame=pd.read_csv('/tmp/食堂利用情報_2021_07.csv')
-    assert not test_frame.df.isnull().values.sum()
+    assert not test_frame.isnull().values.sum()
