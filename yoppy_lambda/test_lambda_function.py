@@ -6,7 +6,8 @@ def test_handle_date():
 
     JST = timezone(timedelta(hours=+9), 'JST')
     today = datetime.now(JST)
-    lastmonth = datetime(today.year, today.month-1,1)    
+    lastmonth = datetime(today.year, today.month-1,1)
+    global a0    
     a0=lastmonth.strftime("%Y-%m")
     global a1
     a1='/tmp/食堂利用情報_'+lastmonth.strftime("%Y")+'_'+lastmonth.strftime("%m")+'.csv'
@@ -24,4 +25,4 @@ def test_export_csv():
 
     test_frame=pd.read_csv(a1)
     assert not test_frame.isnull().values.sum()
-    print(test_frame.利用日)
+    assert (test_frame.利用日).str.startswith(a0)
