@@ -1,6 +1,16 @@
+import boto3
 from datetime import datetime, timedelta, timezone
+from boto3.dynamodb.conditions import Key, Attr
 import pandas as pd
 import numpy as np
+
+#dynamodb指定
+DYNAMO_TABLE_NAME = 'yoppy-test-db2'    #要確認
+dynamodb = boto3.resource('dynamodb')
+table    = dynamodb.Table(DYNAMO_TABLE_NAME)
+#s3指定
+s3_resource = boto3.resource('s3')
+OUTPUT_BUCKET = 'log-yoppy-csv'         #要確認
 
 
 def handle_date():
@@ -35,3 +45,13 @@ def export_csv(frame,temp_filename):
     data = df2.to_csv(temp_filename, index=False, header=True)
     print(type(data))
     return data
+
+def lambda_handler(event, context):
+    url_info=handle_date()
+    #csv_file=
+    export_csv(get_table(url_info[0])['Items'],url_info[1])
+    #s3にアップロード
+    s3_resource.Bucket(OUTPUT_BUCKET).upload_file(url_info[1], url_info[2])
+    s3_resource.Bucket(OUTPUT_BUCKET).upload_file(url_info[1], url_info[3])
+    
+    return 0
