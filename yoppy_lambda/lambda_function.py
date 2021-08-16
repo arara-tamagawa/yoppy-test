@@ -52,10 +52,6 @@ def export_csv(frame,temp_filename):
     return data
 
 def get_table(year_lastmonth_information):
-    # #dynamodb指定
-    # DYNAMO_TABLE_NAME = 'yoppy-test-db2'    #要確認
-    # dynamodb = boto3.resource('dynamodb')
-    # table    = dynamodb.Table(DYNAMO_TABLE_NAME)
     options = {
         'FilterExpression': Attr('used_at_date').contains(year_lastmonth_information),
         'ProjectionExpression' : 'mail_address,used_at_date,used_in,reservation_num'
@@ -70,9 +66,6 @@ def get_table(year_lastmonth_information):
 
 def lambda_handler(event, context):
     environment()
-    # #s3指定
-    # s3_resource = boto3.resource('s3')
-    # OUTPUT_BUCKET = 'log-yoppy-csv'         #要確認
     url_info=handle_date()
     #csv_file=
     export_csv(get_table(url_info[0])['Items'],url_info[1])
