@@ -48,8 +48,6 @@ def export_csv(frame,temp_filename):
     print(df2.to_string())
     #csvファイルにエクスポート
     data = df2.to_csv(temp_filename, index=False, header=True)
-    print(type(data))
-    return data
 
 def get_table(year_lastmonth_information):
     options = {
