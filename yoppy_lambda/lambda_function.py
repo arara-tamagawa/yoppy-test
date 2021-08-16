@@ -3,6 +3,7 @@ from datetime import datetime, timedelta, timezone
 from boto3.dynamodb.conditions import Key, Attr
 import pandas as pd
 import numpy as np
+import pprint
 
 #dynamodb指定
 DYNAMO_TABLE_NAME = 'yoppy-test-db2'    #要確認
