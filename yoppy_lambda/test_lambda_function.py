@@ -1,4 +1,4 @@
-from lambda_function import handle_date,export_csv
+from yoppy_lambda.lambda_function import handle_date,export_csv
 import pandas as pd
 def test_handle_date():
     x=handle_date()
