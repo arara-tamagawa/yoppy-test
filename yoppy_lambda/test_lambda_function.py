@@ -24,4 +24,4 @@ def test_export_csv():
 
     test_frame=pd.read_csv(a1)
     assert not test_frame.isnull().values.sum()
-    print(test_frame.used_at_date)
+    print(test_frame.利用日)
