@@ -25,4 +25,6 @@ def test_export_csv():
 
     test_frame=pd.read_csv(a1)
     assert not test_frame.isnull().values.sum()
-    assert (test_frame.利用日).str.startswith(a0)
+    date_list=test_frame.利用日.tolist()
+    for x in date_list:
+        assert x.startswith(a0)
