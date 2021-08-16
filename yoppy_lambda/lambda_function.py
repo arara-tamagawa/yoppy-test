@@ -8,9 +8,9 @@ import pprint
 # #dynamodb指定
 # DYNAMO_TABLE_NAME = 'yoppy-test-db2'    #要確認
 # dynamodb = boto3.resource('dynamodb')
-# table    = dynamodb.Table(DYNAMO_TABLE_NAME)
+table    = 1
 # #s3指定
-# s3_resource = boto3.resource('s3')
+s3_resource = 1
 # OUTPUT_BUCKET = 'log-yoppy-csv'         #要確認
 
 
