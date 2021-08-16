@@ -1,11 +1,20 @@
 from yoppy_lambda.lambda_function import handle_date,export_csv
 import pandas as pd
+from datetime import datetime, timedelta, timezone
 def test_handle_date():
     x=handle_date()
-    assert x[0]=='2021-07'
-    assert x[1]=='/tmp/食堂利用情報_2021_07.csv'
-    assert x[2]=='latest/食堂利用情報_2021_07.csv'
-    assert x[3]=='2021/07/食堂利用情報_2021_07.csv'
+
+    JST = timezone(timedelta(hours=+9), 'JST')
+    today = datetime.now(JST)
+    lastmonth = datetime(today.year, today.month-1,1)    
+    a0=lastmonth.strftime("%Y-%m")
+    a1='/tmp/食堂利用情報_'+lastmonth.strftime("%Y")+'_'+lastmonth.strftime("%m")+'.csv'
+    a2='latest/食堂利用情報_'+lastmonth.strftime("%Y")+'_'+lastmonth.strftime("%m")+'.csv'
+    a3=lastmonth.strftime("%Y")+'/'+lastmonth.strftime("%m")+'/食堂利用情報_'+lastmonth.strftime("%Y")+'_'+lastmonth.strftime("%m")+'.csv'
+    assert x[0]==a0 #'2021-07'
+    assert x[1]==a1#'/tmp/食堂利用情報_2021_07.csv'
+    assert x[2]==a2#'latest/食堂利用情報_2021_07.csv'
+    assert x[3]==a3#'2021/07/食堂利用情報_2021_07.csv'
 
 
 def test_export_csv():
