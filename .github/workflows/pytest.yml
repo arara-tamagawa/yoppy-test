@@ -27,10 +27,5 @@ jobs:
         # exit-zeroはすべてのエラーを警告として扱う。 GitHubのエディタの幅は127文字
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
-      env:
-          DEFAULT_REGION: ap-northeast-1
-          AWS_ACCOUNT_ID: "000000000000"
-          AWS_ACCESS_KEY_ID: dummy-access-key
-          AWS_SECRET_ACCESS_KEY: dummy-secret-key
       run: |
         pytest

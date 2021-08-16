@@ -5,13 +5,13 @@ import pandas as pd
 import numpy as np
 import pprint
 
-#dynamodb指定
-DYNAMO_TABLE_NAME = 'yoppy-test-db2'    #要確認
-dynamodb = boto3.resource('dynamodb')
-table    = dynamodb.Table(DYNAMO_TABLE_NAME)
-#s3指定
-s3_resource = boto3.resource('s3')
-OUTPUT_BUCKET = 'log-yoppy-csv'         #要確認
+# #dynamodb指定
+# DYNAMO_TABLE_NAME = 'yoppy-test-db2'    #要確認
+# dynamodb = boto3.resource('dynamodb')
+# table    = dynamodb.Table(DYNAMO_TABLE_NAME)
+# #s3指定
+# s3_resource = boto3.resource('s3')
+# OUTPUT_BUCKET = 'log-yoppy-csv'         #要確認
 
 
 def handle_date():
