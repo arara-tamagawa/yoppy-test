@@ -1,4 +1,4 @@
-from yoppy_lambda.BatchProcessing import handle_date,export_csv
+from ..yoppy_lambda.BatchProcessing import handle_date,export_csv
 import pandas as pd
 from datetime import datetime, timedelta, timezone
 def test_handle_date():
